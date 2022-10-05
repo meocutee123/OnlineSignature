@@ -1,0 +1,34 @@
+﻿@model EnvelopeCreationRequest;
+@{
+    ViewData["Title"] = "Envelope";
+}
+
+<h1>Welcome Envelope!</h1>
+@ViewBag.RefreshToken
+
+@using (Html.BeginForm("Envelope", "Ds", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="hidden-fields">
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.SignerClientId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SignerName)
+        @Html.EditorFor(m => m.SignerName)
+        @Html.ValidationMessageFor(m => m.SignerName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SignerEmail)
+        @Html.EditorFor(m => m.SignerEmail)
+        @Html.ValidationMessageFor(m => m.SignerEmail)
+    </div>
+
+    <div class="form-group">
+        <label for="docPdf">DocPdfs</label>
+        <input type="file" name="docPDFs" />
+    </div>
+
+    <button class="btn btn-sm btn-outline-secondary">Submit</button>
+}

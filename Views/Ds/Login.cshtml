@@ -1,0 +1,15 @@
+﻿@using DocuSign.eSign.Client.Auth
+@using OnlineSignature.Ultilities;
+@model Uri;
+@{
+    ViewData["Title"] = "Home Page";
+    var oAuthToken = Context.Session.GetObject<OAuth.OAuthToken>("oAuthToken");
+    var account = Context.Session.GetObject<OAuth.UserInfo.Account>("account");
+
+
+
+}
+
+<a href="@Model.AbsoluteUri">Request application consent</a>
+<button onclick="clickMe()">Click me</button>
+<script> function clickMe() { window.location.reload() } </script>
